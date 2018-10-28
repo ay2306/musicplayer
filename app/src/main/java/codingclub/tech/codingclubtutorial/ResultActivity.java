@@ -1,42 +1,31 @@
 package codingclub.tech.codingclubtutorial;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class ResultActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Show this layout that i am passing to you
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_result);
 
-        final EditText editText = findViewById(R.id.name);
-        Button button = findViewById(R.id.submit_form);
+        final TextView textView = findViewById(R.id.hello_text);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String data = editText.getText().toString();
-                Toast.makeText(getApplicationContext(),data,Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(getApplicationContext(),ResultActivity.class);
-                intent.putExtra("name",data);
-                startActivity(intent);
-            }
-        });
-
+        String name = getIntent().getStringExtra("name");
+        textView.setText("Hey "+name+"! Your feedback has been recorded.");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
