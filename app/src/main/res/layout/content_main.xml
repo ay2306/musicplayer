@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name!"
+            android:id="@+id/hello_text"
+        />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_below="@id/hello_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Fill This"
+            android:padding="5dip"
+            android:singleLine="true"
+            android:textColor="#999999"
+            android:textSize="14dip"/>
+
+        <Button
+            android:id="@+id/submit_form"
+            android:layout_below="@id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:layout_margin="20dp"
+            />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
