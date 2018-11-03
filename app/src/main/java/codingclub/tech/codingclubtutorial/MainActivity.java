@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,18 +23,15 @@ public class MainActivity extends AppCompatActivity {
         // Show this layout that i am passing to you
         setContentView(R.layout.activity_main);
 
+        Log.i("LOGGING_Learn", "The onCreate() event of activity" );
+
         final EditText editText = findViewById(R.id.name);
         Button button = findViewById(R.id.submit_form);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String data = editText.getText().toString();
-                Toast.makeText(getApplicationContext(),data,Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(getApplicationContext(),ResultActivity.class);
-                intent.putExtra("name",data);
-                startActivity(intent);
+                startService();
             }
         });
 
@@ -45,10 +43,17 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                stopService();
             }
         });
+    }
+    public void startService() {
+        startService(new Intent(getBaseContext(), MyService.class));
+    }
+
+    // Method to stop the service
+    public void stopService() {
+        stopService(new Intent(getBaseContext(), MyService.class));
     }
 
     @Override
